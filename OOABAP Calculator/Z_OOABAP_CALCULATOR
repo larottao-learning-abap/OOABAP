@@ -1,0 +1,23 @@
+*&---------------------------------------------------------------------*
+*& Report z_ooabap_calculator
+*&---------------------------------------------------------------------*
+*&
+*&---------------------------------------------------------------------*
+
+REPORT z_ooabap_calculator.
+
+PARAMETERS: p_num1 TYPE i,
+            p_num2 TYPE i,
+            p_op   TYPE char1.
+
+START-OF-SELECTION.
+  DATA: o_calculator TYPE REF TO z_class_lcl_calculator,
+        v_result TYPE i.
+
+  CREATE OBJECT o_calculator.
+
+  v_result = o_calculator->calculate( p_num1 = p_num1
+                                      p_num2 = p_num2
+                                      p_op = p_op ).
+
+  WRITE: 'Result:', v_result.
